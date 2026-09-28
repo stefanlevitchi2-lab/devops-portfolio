@@ -21,6 +21,14 @@ jobs:
         run: |
           docker build -t devops-portfolio-app:latest ./01-containerization
 
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'devops-portfolio-app:latest'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
       - name: Test Running Container
         run: |
           docker run -d -p 8080:8080 --name test-app devops-portfolio-app:latest
