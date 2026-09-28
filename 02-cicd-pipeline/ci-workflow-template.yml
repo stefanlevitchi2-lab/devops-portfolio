@@ -1,0 +1,42 @@
+# GitHub Actions CI/CD Pipeline Reference Architecture
+name: Automated Build, Test, and Scan Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint-and-test:
+    name: Code Quality & Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Syntax Check
+        run: python -m py_compile ../04-automation-scripts/health_checker.py
+
+  build-and-package:
+    name: Docker Build & Verification
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Container
+        run: docker build -t devops-app:latest ../01-containerization
+
+      - name: Run Smoke Test
+        run: |
+          docker run -d -p 8080:8080 --name test-container devops-app:latest
+          sleep 3
+          curl --fail http://localhost:8080 || exit 1
+          docker stop test-container
