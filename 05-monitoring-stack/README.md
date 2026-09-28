@@ -1,15 +1,21 @@
-# 05. Monitoring & Observability Stack
+# 05. Observability & Monitoring Stack
 
-An observability stack deploying **Prometheus** for metrics collection and **Grafana** for real-time visualization, orchestrated using Docker Compose.
+A production-ready observability environment utilizing **Prometheus** for metrics collection and **Grafana** for real-time visualization, containerized with **Docker Compose**.
 
 ---
 
-## 🛠 Stack Components
+## 📊 Live Dashboard Preview
 
-| Service | Port | Description |
-| :--- | :--- | :--- |
-| **Prometheus** | `9090` | Time-series database for scraping and storing system metrics. |
-| **Grafana** | `3000` | Analytics and interactive dashboard visualization platform. |
+<img width="2560" height="1338" alt="image" src="https://github.com/user-attachments/assets/a87ff394-5dfa-4dc1-8937-4001664c1e2e" />
+
+
+---
+
+## ✨ Features & Architecture
+
+- **Prometheus:** Periodically scrapes HTTP telemetry and system metrics on port `9090`.
+- **Grafana:** Visualizes metrics from Prometheus on port `3000` using pre-configured data sources.
+- **Docker Network:** Isolated container networking allowing Grafana to securely query Prometheus via service DNS (`http://prometheus:9090`).
 
 ---
 
@@ -17,36 +23,25 @@ An observability stack deploying **Prometheus** for metrics collection and **Gra
 
 ```text
 05-monitoring-stack/
-├── docker-compose.yml   # Container orchestration service definitions
-├── prometheus.yml       # Scrape configuration & target rules
-└── README.md            # Stack documentation
+├── docker-compose.yml  # Multi-container stack (Prometheus & Grafana)
+├── prometheus.yml      # Scrape configuration & targets
+└── README.md           # Module documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 How to Run
 
-1. **Start the Monitoring Stack:**
+1. **Start the stack:**
    ```bash
    docker compose up -d
    ```
 
-2. **Access the Interfaces:**
-   - **Prometheus Targets & Metrics:** Open `http://localhost:9090`
-   - **Grafana Dashboard:** Open `http://localhost:3000` *(Default login: `admin` / `admin`)*
+2. **Access the interfaces:**
+   - **Grafana:** [http://127.0.0.1:3000](http://127.0.0.1:3000) (Login: `admin` / `admin`)
+   - **Prometheus:** [http://127.0.0.1:9090](http://127.0.0.1:9090)
 
-3. **Verify Container Status:**
-   ```bash
-   docker compose ps
-   ```
-
-4. **Stop the Stack:**
+3. **Stop the stack:**
    ```bash
    docker compose down
    ```
-
----
-
-## 📈 Configuration Summary
-- Prometheus scrapes self-metrics and container metrics every 15 seconds.
-- Persistent Grafana configurations allow custom dashboard creation for system performance monitoring.
