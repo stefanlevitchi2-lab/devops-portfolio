@@ -1,55 +1,51 @@
-# 05. Monitoring & Observability Stack
+# devops-portfolio
+Practical DevOps portfolio featuring hands-on implementations of containerization (Docker), automated CI/CD pipelines (GitHub Actions), Infrastructure as Code (Terraform/Ansible), and Linux/Python system automation tools.
+# DevOps & Systems Automation Portfolio
 
-An observability stack deploying **Prometheus** for metrics collection and **Grafana** for real-time visualization, orchestrated using Docker Compose.
+Welcome! This repository serves as a practical showcase of production-ready infrastructure setups, deployment automation, and system monitoring tools. Every project inside is built using modular design patterns, security-first container configurations, and automated CI/CD testing.
+
+### 🎯 Core Focus
+- **Containerization & Orchestration:** Multi-stage Docker builds, non-root execution, Docker Compose stacks.
+- **CI/CD Automation:** GitHub Actions workflows for linting, security scanning (Trivy), and automated image delivery.
+- **Infrastructure as Code & Config Management:** Declarative cloud provisioning with Terraform and server setup using Ansible.
+- **Scripting & Tooling:** Custom Python and Bash automation tools for system health checking and log parsing.
+---
+
+## 🛠 Tech Stack
+
+- **Operating Systems & Scripting:** Linux (Ubuntu/Debian), Bash, Python
+- **Containers & Orchestration:** Docker, Docker Compose
+- **CI/CD Automation:** GitHub Actions
+- **Infrastructure as Code:** Terraform
+- **Monitoring & Observability:** Prometheus, Grafana
 
 ---
 
-## 🛠 Stack Components
+## 📁 Repository Structure & Projects
 
-| Service | Port | Description |
-| :--- | :--- | :--- |
-| **Prometheus** | `9090` | Time-series database for scraping and storing system metrics. |
-| **Grafana** | `3000` | Analytics and interactive dashboard visualization platform. |
+### 1. [`01-containerization/`](./01-containerization)
+- **Overview:** Web application containerized with multi-stage Docker builds and orchestrated using Docker Compose.
+- **Key Concepts:** Port mapping, non-root application execution, persistent container environment setup.
 
----
+### 2. [`02-cicd-pipeline/`](./02-cicd-pipeline)
+- **Overview:** Automated CI/CD pipeline built with GitHub Actions.
+- **Key Concepts:** Automated code linting, unit testing, and Docker image build verification on every push.
 
-## 📁 File Structure
+### 3. [`03-infrastructure-as-code/`](./03-infrastructure-as-code)
+- **Overview:** Declarative cloud infrastructure setup written in Terraform.
+- **Key Concepts:** AWS EC2 provisioning, Security Group configuration, modular state/variable management.
 
-```text
-05-monitoring-stack/
-├── docker-compose.yml   # Container orchestration service definitions
-├── prometheus.yml       # Scrape configuration & target rules
-└── README.md            # Stack documentation
-```
+### 4. [`04-automation-scripts/`](./04-automation-scripts)
+- **Overview:** Python-based operational tool for system resource monitoring and health status checks.
+- **Key Concepts:** System metrics collection, standalone execution, and containerized deployment.
 
----
-
-## 🚀 Getting Started
-
-1. **Start the Monitoring Stack:**
-   ```bash
-   docker compose up -d
-   ```
-
-2. **Access the Interfaces:**
-   - **Prometheus Targets & Metrics:** Open `http://localhost:9090`
-   - **Grafana Dashboard:** Open `http://localhost:3000` *(Default login: `admin` / `admin`)*
-
-3. **Verify Container Status:**
-   ```bash
-   docker compose ps
-   ```
-
-4. **Stop the Stack:**
-   ```bash
-   docker compose down
-   ```
+### 5. [`05-monitoring-stack/`](./05-monitoring-stack)
+- **Overview:** Observability stack deploying Prometheus and Grafana metrics visualization.
+- **Key Concepts:** Metric scraping configurations, container service dependency management.
 
 ---
 
-## 📈 Configuration Summary
-- Prometheus scrapes self-metrics and container metrics every 15 seconds.
-- Persistent Grafana configurations allow custom dashboard creation for system performance monitoring.
+## 🚀 Quickstart
 
 Clone the repository and run any component locally using Docker:
 
