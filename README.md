@@ -1,5 +1,5 @@
-# devops-portfolio
-Practical DevOps portfolio featuring hands-on implementations of containerization (Docker), automated CI/CD pipelines (GitHub Actions), Infrastructure as Code (Terraform/Ansible), and Linux/Python system automation tools.
+[![Docker CI Build](https://github.com/stefanlevitchi2-lab/devops-portfolio/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/stefanlevitchi2-lab/devops-portfolio/actions)
+
 # DevOps & Systems Automation Portfolio
 
 Welcome! This repository serves as a practical showcase of production-ready infrastructure setups, deployment automation, and system monitoring tools. Every project inside is built using modular design patterns, security-first container configurations, and automated CI/CD testing.
